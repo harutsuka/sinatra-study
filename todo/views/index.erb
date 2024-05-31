@@ -1,9 +1,19 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>タイトル</title>
-</head>
-<body>
-</body>
-</html>
+<div>
+	<table>
+		<thread>
+			<tr>
+				<th>タイトル</th>
+			</tr>
+		</thread>
+		<tbody>
+			<% @tasks.each do |task| %>
+				<tr>
+					<td><%= GCI.escapeHTML(task.title) %></td>
+				</tr>
+			<% end %>
+			<tr>
+				<td colspan="7"><a href="/tasks/new">新しいtodo</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -14,6 +14,11 @@ helpers do
 end
 
 get "/" do
+    if current_user.nil?
+        @tasks = Task.none
+    else
+        @tasks = current_user.tasks
+    end
     erb :index
 end
 get "/signup" do
@@ -45,4 +50,14 @@ end
 get "/signout" do
     session[:user] = nil
     erb :sign_in
+end
+
+get "/tasks/new" do
+    erb :new
+end
+
+post "/tasks" do
+    
+    current_user.tasks.create(title: params[:title])
+    redirect "/"
 end
