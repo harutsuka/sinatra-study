@@ -13,6 +13,11 @@ helpers do
     end
 end
 
+before "/tasks" do
+    if current_user.nil?
+        redirect "/"
+    end
+end
 get "/" do
     if current_user.nil?
         @tasks = Task.none
