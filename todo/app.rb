@@ -66,3 +66,17 @@ post "/tasks" do
     current_user.tasks.create(title: params[:title])
     redirect "/"
 end
+
+post "/tasks/:id/done" do
+    task = Task.find(params[:id])
+    task.completed = true
+    task.save
+    redirect "/"
+end
+
+get "/tasks/:id/star" do
+    task = Task.find(params[:id])
+    task.star = !task.star
+    task.save
+    redirect "/"
+end
