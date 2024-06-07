@@ -80,3 +80,11 @@ get "/tasks/:id/star" do
     task.save
     redirect "/"
 end
+
+post "/tasks" do
+    current_user.task.create(
+        title: params[:title],
+        due_date: Date.parse(params[:due_date])
+    )
+    redirect "/"
+end
