@@ -24,7 +24,7 @@
 						<% end %>
 					</td>
 					<td>
-						締切まで<%= (task.due_date - Data.today).to_i %>日
+						締切まで<%= (task.due_date - Date.today).to_i %>日
 					<td>
 						<a href="/tasks/<%= task.id %>/star" style="
 							<% if task.star %>
