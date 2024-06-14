@@ -24,7 +24,15 @@
 						<% end %>
 					</td>
 					<td>
-						締切まで<%= (task.due_date - Date.today).to_i %>日
+						<% unless task.completed %>
+							<% if task.remained_days < 0 %>
+								締切過ぎた
+							<% elsif task.remained_days == 0 %>
+								今日締切
+							<% elsif task.remained_days < 7 %>
+								締切近い
+							<% end %>
+						<% end %>
 					<td>
 						<a href="/tasks/<%= task.id %>/star" style="
 							<% if task.star %>
