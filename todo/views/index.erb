@@ -5,6 +5,7 @@
 				<th>タイトル</th>
 				<th>締切</th>
 				<th>Done</th>
+				<th>削除</th>
 				<th>備考</th>
 				<th>重要</th>
 			</tr>
@@ -22,6 +23,11 @@
 						<% else %>
 							Done!
 						<% end %>
+					</td>
+					<td>
+						<form action="/tasks/<%= task.id %>/delete" method="post">
+							<input type="submit" value="削除">
+						</form>
 					</td>
 					<td>
 						<% unless task.completed %>

@@ -87,3 +87,9 @@ get "/tasks/:id/star" do
     task.save
     redirect "/"
 end
+
+post "/tasks/:id/delete" do
+    task = Task.find(params:[id])
+    task.destroy
+    redirect "/"
+end
