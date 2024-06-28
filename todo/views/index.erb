@@ -1,11 +1,11 @@
 <div>
 	<div>
 		<ul>
-			<li><a href="/">トップ</a></li>
+			<%= erb :_count_due, locals: {title: "トップ",url: "/",tasks: Task.all} %>
 			<li><a href="/tasks/done">done</a></li>
-			<li><a href="/tasks/over">締切過ぎた</a></li>
+			<%= erb :_count_due, locals: {title: "締切過ぎた",url: "/tasks/over",tasks: Task.all} %>
 			<% @lists.each do |list| %>
-				<li><a href="/?list=<%= list.id %>"><%= list.name %></a></li>
+			<%= erb :_count_due, locals: {title: list.name ,url: "/?list=#{list.id}",tasks: list.tasks} %>
 			<% end %>
 		</ul>
 	</div>	
